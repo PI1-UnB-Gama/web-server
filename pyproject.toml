@@ -10,6 +10,7 @@ package-mode = false
 [tool.poetry.dependencies]
 python = "^3.12"
 django = "^5.0.6"
+django-environ = "^0.11.2"
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^3.7.1"
@@ -56,8 +57,8 @@ select = [
 [tool.ruff.lint.per-file-ignores]
 # Ignore errors in specific files.
 # https://docs.astral.sh/ruff/settings/#extend-per-file-ignores
-# "server/settings/development.py" = ["F403"]
-# "*/tests/*.py" = ["S101", "S105"]
+"server/settings/development.py" = ["F403"]
+"*/tests/*.py" = ["S101", "S105"]
 
 [tool.ruff.lint.pycodestyle]
 # pycodestyle configuration:
