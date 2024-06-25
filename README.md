@@ -1,6 +1,9 @@
-# Projeto Django para Simulação de Percurso de Carrinho Seguidor de Linha
+# Carrinho Seguidor de Linha (Django)
 
-Este projeto é uma aplicação Django que simula e plota o percurso de um carrinho seguidor de linha. O carrinho possui dois motores conectados às rodas dianteiras, uma roda de apoio na parte traseira e um sensor de linha preta. Os motores e o sensor estão conectados a um Arduino Mega.
+Este projeto é uma aplicação Django que simula e mostra o percurso de um
+seguidor de linha. O carrinho possui dois motores conectados às rodas
+dianteiras, uma roda de apoio na parte traseira e um sensor de linha preta. Os
+motores e o sensor estão conectados a um Arduino Mega.
 
 ## Funcionalidades
 
@@ -14,6 +17,9 @@ Este projeto é uma aplicação Django que simula e plota o percurso de um carri
 - Django 3.0 ou superior
 
 ## Instalação
+
+Caso você não esteja usando Poetry, siga os passos abaixo para instalar e
+executar o projeto:
 
 1. Clone o repositório:
 
@@ -47,6 +53,13 @@ Este projeto é uma aplicação Django que simula e plota o percurso de um carri
    ```bash
    python manage.py createsuperuser
    ```
+
+Caso você esteja usando Poetry, execute o comando abaixo para instalar as
+dependências:
+
+```bash
+poetry install
+```
 
 ## Simulação de Dados
 

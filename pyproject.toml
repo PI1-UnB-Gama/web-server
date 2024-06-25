@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "pi1-web-server"
+version = "0.1.0"
+description = "Repositório contendo o código do servidor web do Projeto Integrador de Engenharia 1."
+license = "MIT"
+authors = ["kyomi <me@kyomi.dev>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.0.6"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
