@@ -112,3 +112,5 @@ staticfiles/
 media/
 
 *.csv
+.pytest_cache/
+.ruff_cache/
