@@ -110,3 +110,5 @@ staticfiles/
 
 # Django media files
 media/
+
+*.csv
