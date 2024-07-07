@@ -12,11 +12,18 @@ from .models import SensorData
 def receive_data(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-        value = data.get('value')
-        if value is not None:
-            SensorData.objects.create(value=value)
-            return JsonResponse({'status': 'success'})
-        return JsonResponse({'status': 'error', 'message': 'Invalid data'})
+        values = data.get('values')
+
+        if values is None:
+            return JsonResponse({'status': 'error', 'message': 'Invalid data'})
+
+        for value in values:
+            if value is not None:
+                x = value["x"]
+                y = value["y"]
+                timestamp = value["timestamp"]
+                SensorData.objects.create(x=x, y=y, timestamp=timestamp)
+        return JsonResponse({'status': 'success'})
     return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
 
 def simulate_path():
