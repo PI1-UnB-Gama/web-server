@@ -5,26 +5,33 @@ import random
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.utils import timezone
+from django.http.request import HttpRequest
+from django.http.response import JsonResponse
 
 from .models import SensorData
 
 
-def receive_data(request):
-    if request.method == 'POST':
-        data = json.loads(request.body)
-        values = data.get('values')
+def receive_data(request: HttpRequest) -> JsonResponse:
+    if request.method != 'POST':
+        return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
 
-        if values is None:
-            return JsonResponse({'status': 'error', 'message': 'Invalid data'})
+    data = json.loads(request.body)
+    values = data.get('values')
 
-        for value in values:
-            if value is not None:
-                x = value["x"]
-                y = value["y"]
-                timestamp = value["timestamp"]
-                SensorData.objects.create(x=x, y=y, timestamp=timestamp)
-        return JsonResponse({'status': 'success'})
-    return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+    if values is None:
+        return JsonResponse({'status': 'error', 'message': 'Invalid data'})
+
+    for value in values:
+        if value is None:
+            continue
+
+        timestamp = value["timestamp"]
+        x = value["x"]
+        y = value["y"]
+        power_current = value["power_current"]
+        SensorData.objects.create(timestamp=timestamp, x=x, y=y, power_current=power_current)
+
+    return JsonResponse({'status': 'success'})
 
 def simulate_path():
     path = []
