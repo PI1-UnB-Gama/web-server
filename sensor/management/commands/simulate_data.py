@@ -12,8 +12,8 @@ class Command(BaseCommand):
         data = csv.reader(f)
 
         for row in data:
-            timestamp, rotations, pulses, x, y, volts, diameter = row
-            SensorData.objects.create(timestamp=timestamp, x=x, y=y)
+            timestamp, x, y, power_current = row
+            SensorData.objects.create(timestamp=timestamp, x=x, y=y, power_current=power_current)
 
         f.close()
         print("Dados inseridos com sucesso.")
